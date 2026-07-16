@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Features from "../components/Features";
 import Statistics from "../components/Statistics";
+import Features from "../components/Features";
 import Categories from "../components/Categories";
 
 function Home() {
@@ -9,8 +9,8 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <Features />
       <Statistics />
+      <Features />
       <Categories />
     </>
   );

@@ -1,82 +1,308 @@
-/* Navbar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
 
-.navbar {
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 18px 30px;
+body{
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+font-family:'Inter',sans-serif;
+background:#FBFAF6;
+
 }
 
-.logo a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: bold;
-    color: #0f766e;
+/*============================*/
+
+.navbar{
+
+position:fixed;
+
+top:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:92%;
+
+z-index:999;
+
 }
 
-.logo span {
-    color: #16a34a;
+/*============================*/
+
+.nav-container{
+
+max-width:1450px;
+
+margin:auto;
+
+padding:20px 40px;
+
+background:rgba(255,255,255,.88);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+box-shadow:
+
+0 12px 35px rgba(0,0,0,.08);
+
+border:1px solid rgba(255,255,255,.5);
+
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 35px;
+/*============================*/
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 17px;
-    font-weight: 500;
-    transition: 0.3s;
+.logo-icon{
+
+font-size:34px;
+
+color:#2E7D32;
+
 }
 
-.nav-links a:hover {
-    color: #16a34a;
+.logo-text h2{
+
+font-family:'Poppins',sans-serif;
+
+font-size:34px;
+
+font-weight:700;
+
+color:#1E293B;
+
 }
 
-.auth-buttons {
-    display: flex;
-    gap: 15px;
+.logo-text span{
+
+color:#2E7D32;
+
 }
 
-.login-btn,
-.register-btn {
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: 0.3s;
+.logo-text p{
+
+font-size:12px;
+
+letter-spacing:2px;
+
+color:#777;
+
+margin-top:-4px;
+
+text-transform:uppercase;
+
 }
 
-.login-btn {
-    border: 2px solid #16a34a;
-    color: #16a34a;
+/*============================*/
+
+.nav-links{
+
+display:flex;
+
+gap:45px;
+
+list-style:none;
+
 }
 
-.login-btn:hover {
-    background: #16a34a;
-    color: #ffffff;
+.nav-links a{
+
+text-decoration:none;
+
+color:#334155;
+
+font-size:17px;
+
+font-weight:500;
+
+transition:.3s;
+
+position:relative;
+
 }
 
-.register-btn {
-    background: #16a34a;
-    color: white;
+.nav-links a:hover{
+
+color:#2E7D32;
+
 }
 
-.register-btn:hover {
-    background: #15803d;
+.nav-links a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-8px;
+
+width:0;
+
+height:2px;
+
+background:#2E7D32;
+
+transition:.35s;
+
+}
+
+.nav-links a:hover::after{
+
+width:100%;
+
+}
+
+/*============================*/
+
+.nav-buttons{
+
+display:flex;
+
+gap:18px;
+
+align-items:center;
+
+}
+
+/*============================*/
+
+.login-btn{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:15px 28px;
+
+border:1px solid #D7D7D7;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#1E293B;
+
+background:white;
+
+transition:.35s;
+
+}
+
+.login-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+/*============================*/
+
+.start-btn{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:15px 30px;
+
+background:#2E7D32;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:600;
+
+border-radius:50px;
+
+transition:.35s;
+
+box-shadow:
+
+0 10px 25px rgba(46,125,50,.25);
+
+}
+
+.start-btn:hover{
+
+background:#256428;
+
+transform:translateY(-3px);
+
+}
+
+/*============================*/
+
+@media(max-width:1200px){
+
+.nav-links{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-container{
+
+padding:18px 22px;
+
+}
+
+.logo-text p{
+
+display:none;
+
+}
+
+.start-btn{
+
+padding:14px 20px;
+
+}
+
+.login-btn{
+
+padding:14px 20px;
+
+}
+
+.logo-text h2{
+
+font-size:28px;
+
+}
+
 }
