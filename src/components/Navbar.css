@@ -1,0 +1,82 @@
+/* Navbar */
+
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: #0f766e;
+}
+
+.logo span {
+    color: #16a34a;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #16a34a;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.login-btn,
+.register-btn {
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.login-btn {
+    border: 2px solid #16a34a;
+    color: #16a34a;
+}
+
+.login-btn:hover {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.register-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.register-btn:hover {
+    background: #15803d;
+}
