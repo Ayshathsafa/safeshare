@@ -5,6 +5,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import GetStarted from "../pages/GetStarted";
 import NotFound from "../pages/NotFound";
 
 function AppRoutes() {
@@ -14,7 +15,14 @@ function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
+
+      {/* Register Page */}
       <Route path="/register" element={<Register />} />
+
+      {/* Get Started Page */}
+      <Route path="/getstarted" element={<GetStarted />} />
+      <Route path="/get-started" element={<GetStarted />} />
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

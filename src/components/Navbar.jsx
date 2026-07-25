@@ -55,7 +55,7 @@ function Navbar() {
 
           </Link>
 
-          <Link to="/register" className="start-btn">
+          <Link to="/get-started" className="start-btn">
 
             Get Started
 
