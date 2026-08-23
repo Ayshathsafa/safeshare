@@ -6,7 +6,6 @@ import {
   FaPhone,
   FaMapMarkerAlt,
   FaBuilding,
-  FaHandshake,
   FaHospital,
   FaUserShield,
   FaCheckCircle,
@@ -42,7 +41,6 @@ function Register() {
     phone: "",
     city: "",
     organization: "",
-    donationType: "",
     registrationId: "",
     hospitalName: "",
     notes: "",
@@ -59,11 +57,23 @@ function Register() {
     setRole(selected);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Register data", { role, ...formData });
-    alert(`Account requested for ${role}. (Form submission is not wired yet.)`);
+ const handleSubmit = (event) => {
+  event.preventDefault();
+
+  const userData = {
+    role,
+    ...formData,
   };
+
+  localStorage.setItem(
+    "safeShareUser",
+    JSON.stringify(userData)
+  );
+
+  alert("Registration successful! Please login.");
+
+  window.location.href = "/login";
+};
 
   return (
     <>
@@ -193,22 +203,7 @@ function Register() {
                 </div>
               </div>
 
-              {role === "donor" && (
-                <div className="field">
-                  <label htmlFor="donationType">Donation Type</label>
-                  <div className="input-group">
-                    <FaHandshake />
-                    <input
-                      id="donationType"
-                      name="donationType"
-                      type="text"
-                      placeholder="Food, medicine, clothes, books..."
-                      value={formData.donationType}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-              )}
+              
 
               {role === "ngo" && (
                 <div className="field">

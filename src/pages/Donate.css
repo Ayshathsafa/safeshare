@@ -5,8 +5,7 @@
 .donate-page{
     background:#f8fafc;
     min-height:100vh;
-    padding-top:48px; /* reduced top spacing */
-    padding-bottom:48px;
+    padding:40px 0 80px; /* reduced top padding since hero removed */
 }
 
 /* ===========================
@@ -104,7 +103,7 @@
 .online-section{
     max-width:1200px;
     margin:auto;
-    padding:12px 6% 12px; /* tighter top and side gutters */
+    padding:10px 4% 20px; /* compact top spacing to bring online row upward */
 }
 
 .online-section h2{
@@ -195,20 +194,20 @@
 .donation-section{
     max-width:1200px;
     margin:auto;
-    padding:90px 8%; /* match About/Contact spacing */
+    padding:0 8%;
 }
 
 .form-container{
     display:grid;
-    grid-template-columns:1.5fr 1fr; /* balanced form vs right panel */
-    gap:40px; /* match form spacing on other pages */
+    grid-template-columns:3fr 1fr; /* widened form area */
+    gap:35px;
 }
 
 .form-left{
     background:white;
-    padding:28px; /* reduced inner padding */
-    border-radius:20px;
-    box-shadow:0 14px 30px rgba(0,0,0,.05);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 18px 40px rgba(0,0,0,.06);
 }
 
 .form-left h2{
@@ -304,14 +303,12 @@ textarea{
 
 .ai-card{
     width:100%;
-    max-width:420px; /* slightly narrower */
     background:linear-gradient(180deg,#ecfdf5,#dcfce7);
-    border-radius:20px;
-    padding:24px; /* reduced padding */
+    border-radius:25px;
+    padding:35px;
     position:sticky;
-    top:70px; /* bring into view earlier */
-    box-shadow:0 14px 30px rgba(34,197,94,.12);
-    margin-left:0; /* align closer to form like other pages */
+    top:100px;
+    box-shadow:0 18px 40px rgba(34,197,94,.15);
 }
 
 .ai-tag{
@@ -422,24 +419,21 @@ textarea:focus{
 
 @media(max-width:1100px){
 
-    .online-section,
-    .donation-section{
-        padding-left:6%;
-        padding-right:6%;
-    }
+.donate-hero{
+    grid-template-columns:1fr;
+}
 
-    .form-container{
-        grid-template-columns:1fr;
-    }
+.form-container{
+    grid-template-columns:1fr;
+}
 
-    .form-right{
-        margin-top:30px;
-    }
+.form-right{
+    margin-top:30px;
+}
 
-    .ai-card{
-        position:static;
-        max-width:100%;
-    }
+.ai-card{
+    position:static;
+}
 
 }
 
@@ -534,4 +528,24 @@ textarea:focus{
 
 .donate-btn:active{
     transform:scale(.98);
+}
+.category-grid {
+    margin-bottom: 30px;
+}
+
+.category-card {
+    cursor: pointer;
+}
+
+.category-card.active {
+    background: #22c55e;
+    color: white;
+}
+
+.category-card.active p {
+    color: white;
+}
+
+.category-card.active .category-icon {
+    color: white;
 }

@@ -1,116 +1,123 @@
-import "./Hero.css";
-import heroImage from "../assets/hero.png";
-
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaArrowRight,
-  FaShieldAlt,
-  FaBrain,
-  FaLeaf
-} from "react-icons/fa";
+import "./Hero.css";
 
 function Hero() {
+  const slides = [
+    {
+      image: "/images/food-donation.jpg",
+      title: "Turn Surplus Into Support",
+      text: "Share food and essential resources with people who need them.",
+    },
+    {
+      image: "/images/medicine-donation.jpg",
+      title: "Share. Support. Save Lives.",
+      text: "Connect unused medicines and medical supplies with verified organizations.",
+    },
+    {
+      image: "/images/community-support.jpg",
+      title: "Together, We Can Make a Difference",
+      text: "SafeShare connects donors, NGOs and hospitals through intelligent matching.",
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Automatic slide change
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Next
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  // Previous
+  const previousSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + slides.length) % slides.length
+    );
+  };
+
+  // Select slide
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const slide = slides[currentSlide];
+
   return (
     <section className="hero">
 
-      {/* Decorative Leaves */}
+      {/* Background Image */}
+      <div
+        className="hero-background"
+        style={{
+          backgroundImage: `url(${slide.image})`,
+        }}
+      ></div>
 
-      <div className="leaf left-leaf"></div>
-      <div className="leaf right-leaf"></div>
+      {/* Dark overlay for readable text */}
+      <div className="hero-overlay"></div>
 
-      <div className="hero-container">
+      {/* Text Content */}
+      <div className="hero-content">
 
-        {/* LEFT */}
+        <span className="hero-tag">
+          SAFE • SHARE • SUPPORT
+        </span>
 
-        <div className="hero-left">
+        <h1>{slide.title}</h1>
 
-          <div className="hero-badge">
+        <p>{slide.text}</p>
 
-            <span>AI Powered</span>
+        <div className="hero-buttons">
 
-            <span>•</span>
-
-            <span>Secure</span>
-
-            <span>•</span>
-
-            <span>Trusted</span>
-
-          </div>
-
-          <h1>
-
-            Every Donation
-
-            <br />
-
-            Creates <span>Hope.</span>
-
-          </h1>
-
-          <div className="hero-divider"></div>
-
-          <p>
-
-            SafeShare is an AI-powered platform connecting donors,
-            NGOs and communities to redistribute food, medicines,
-            clothes, books and essential resources with transparency,
-            trust and intelligent matching.
-
-          </p>
-
-          <div className="hero-buttons">
-
-            <Link to="/donate" className="donate">
+          <Link to="/donate" className="hero-primary-btn">
             Donate Now
-            <FaArrowRight />
           </Link>
 
-          <button className="impact">
-            Explore Impact
-          </button>
-
-          </div>
-
-          <div className="trust-row">
-
-            <div>
-
-              <FaShieldAlt />
-
-              Secure & Verified
-
-            </div>
-
-            <div>
-
-              <FaBrain />
-
-              AI Matching
-
-            </div>
-
-            <div>
-
-              <FaLeaf />
-
-              Sustainable
-
-            </div>
-
-          </div>
+          <Link to="/about" className="hero-secondary-btn">
+            Learn More
+          </Link>
 
         </div>
 
-        {/* RIGHT */}
+      </div>
 
-        <div className="hero-right">
+      {/* Previous Button */}
+      <button
+        className="slider-arrow slider-left"
+        onClick={previousSlide}
+      >
+        &#10094;
+      </button>
 
-          <div className="hero-circle"></div>
+      {/* Next Button */}
+      <button
+        className="slider-arrow slider-right"
+        onClick={nextSlide}
+      >
+        &#10095;
+      </button>
 
-          <img src={heroImage} alt="SafeShare" />
+      {/* Dots */}
+      <div className="slider-dots">
 
-        </div>
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`slider-dot ${
+              currentSlide === index ? "active" : ""
+            }`}
+            onClick={() => goToSlide(index)}
+          ></button>
+        ))}
 
       </div>
 

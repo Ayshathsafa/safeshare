@@ -1,82 +1,104 @@
-function Features() {
-  const styles = {
-    section: {
-      padding: "80px 8%",
-      background: "#f8fafc",
-    },
-    title: {
-      textAlign: "center",
-      fontSize: "42px",
-      color: "#0f172a",
-      marginBottom: "15px",
-    },
-    subtitle: {
-      textAlign: "center",
-      color: "#666",
-      fontSize: "18px",
-      marginBottom: "50px",
-    },
-    grid: {
-      maxWidth: "1200px",
-      margin: "auto",
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
-      gap: "30px",
-    },
-    card: {
-      background: "#fff",
-      padding: "35px",
-      borderRadius: "15px",
-      textAlign: "center",
-      boxShadow: "0 5px 15px rgba(0,0,0,.08)",
-    },
-    icon: {
-      fontSize: "50px",
-      marginBottom: "20px",
-    },
-    heading: {
-      color: "#16a34a",
-      marginBottom: "15px",
-    },
-    text: {
-      color: "#555",
-      lineHeight: "1.6",
-    },
-  };
+import {
+  FaRobot,
+  FaShieldAlt,
+  FaMapMarkerAlt,
+  FaRecycle,
+} from "react-icons/fa";
 
+function Features() {
   return (
     <section className="features-section">
       <div className="section-content">
-        <h2 className="section-title">Why Choose SafeShare?</h2>
 
-        <p className="section-subtitle">
-          SafeShare makes donation simple, secure, and AI-powered.
-        </p>
+        {/* Section Heading */}
+        <div className="features-header">
+          <span className="features-tag">WHY SAFESHARE?</span>
 
+          <h2 className="section-title">
+            Making Every Donation <span>Count</span>
+          </h2>
+
+          <p className="section-subtitle">
+            SafeShare connects resources with the people and organizations
+            that need them most — safely, intelligently, and efficiently.
+          </p>
+        </div>
+
+        {/* Features */}
         <div className="features-grid">
+
+          {/* Feature 1 */}
           <div className="feature-card">
-            <div className="feature-icon">🍱</div>
-            <h3 className="feature-heading">Food Donation</h3>
-            <p className="feature-text">Donate surplus food to people and NGOs safely.</p>
+            <div className="feature-icon">
+              <FaRobot />
+            </div>
+
+            <div>
+              <h3 className="feature-heading">
+                Smart AI Matching
+              </h3>
+
+              <p className="feature-text">
+                Our intelligent system matches donations with suitable
+                recipients based on type, location, urgency, and availability.
+              </p>
+            </div>
           </div>
 
+          {/* Feature 2 */}
           <div className="feature-card">
-            <div className="feature-icon">💊</div>
-            <h3 className="feature-heading">Medicine Sharing</h3>
-            <p className="feature-text">Share unused medicines with verified recipients.</p>
+            <div className="feature-icon">
+              <FaShieldAlt />
+            </div>
+
+            <div>
+              <h3 className="feature-heading">
+                Verified Organizations
+              </h3>
+
+              <p className="feature-text">
+                Donations are connected with verified NGOs and hospitals
+                to create a safer and more trustworthy platform.
+              </p>
+            </div>
           </div>
 
+          {/* Feature 3 */}
           <div className="feature-card">
-            <div className="feature-icon">🤖</div>
-            <h3 className="feature-heading">AI Matching</h3>
-            <p className="feature-text">AI matches donors with the right recipients.</p>
+            <div className="feature-icon">
+              <FaMapMarkerAlt />
+            </div>
+
+            <div>
+              <h3 className="feature-heading">
+                Right Place, Right Time
+              </h3>
+
+              <p className="feature-text">
+                Location-based matching helps donations reach nearby
+                organizations and people who need them quickly.
+              </p>
+            </div>
           </div>
 
+          {/* Feature 4 */}
           <div className="feature-card">
-            <div className="feature-icon">🛡️</div>
-            <h3 className="feature-heading">Secure Platform</h3>
-            <p className="feature-text">Verified users with safe and transparent donations.</p>
+            <div className="feature-icon">
+              <FaRecycle />
+            </div>
+
+            <div>
+              <h3 className="feature-heading">
+                Reduce Resource Waste
+              </h3>
+
+              <p className="feature-text">
+                Give surplus food, medicines, clothes, and essential
+                resources a meaningful second life.
+              </p>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
