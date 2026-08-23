@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Categories() {
   const categories = [
     {
@@ -91,24 +93,23 @@ function Categories() {
   };
 
   return (
-    <section style={styles.section}>
-      <div style={styles.container}>
-        <h2 style={styles.title}>Donation Categories</h2>
+    <section className="categories-section">
+      <div className="section-content">
+        <h2 className="section-title">Donation Categories</h2>
 
-        <p style={styles.subtitle}>
+        <p className="section-subtitle">
           Choose what you'd like to donate and make a meaningful impact.
         </p>
 
-        <div style={styles.grid}>
+        <div className="categories-grid">
           {categories.map((item, index) => (
-            <div key={index} style={styles.card}>
-              <div style={styles.icon}>{item.icon}</div>
-
-              <h3 style={styles.heading}>{item.title}</h3>
-
-              <p style={styles.text}>{item.description}</p>
-
-              <button style={styles.button}>Donate Now</button>
+            <div key={index} className="category-card">
+              <div className="category-icon">{item.icon}</div>
+              <h3 className="category-heading">{item.title}</h3>
+              <p className="category-text">{item.description}</p>
+              <Link to="/donate" className="category-btn">
+                Donate Now
+              </Link>
             </div>
           ))}
         </div>

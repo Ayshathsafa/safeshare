@@ -62,19 +62,19 @@ function Statistics() {
   };
 
   return (
-    <section style={styles.section}>
-      <div style={styles.container}>
-        <h2 style={styles.title}>Our Impact</h2>
+    <section className="statistics-section">
+      <div className="section-content">
+        <h2 className="section-title">Our Impact</h2>
 
-        <p style={styles.subtitle}>
+        <p className="section-subtitle">
           Together we can reduce waste and create a better community.
         </p>
 
-        <div style={styles.grid}>
+        <div className="stats-grid">
           {stats.map((item, index) => (
-            <div key={index} style={styles.card}>
-              <div style={styles.number}>{item.number}</div>
-              <div style={styles.text}>{item.title}</div>
+            <div key={index} className="stat-card">
+              <div className="stat-number">{item.number}</div>
+              <div className="stat-label">{item.title}</div>
             </div>
           ))}
         </div>

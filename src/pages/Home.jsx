@@ -3,15 +3,18 @@ import Hero from "../components/Hero";
 import Statistics from "../components/Statistics";
 import Features from "../components/Features";
 import Categories from "../components/Categories";
+import "./Home.css";
 
 function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Statistics />
-      <Features />
-      <Categories />
+      <main className="home-page">
+        <Hero />
+        <Statistics />
+        <Features />
+        <Categories />
+      </main>
     </>
   );
 }

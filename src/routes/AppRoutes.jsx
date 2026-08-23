@@ -6,6 +6,7 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import GetStarted from "../pages/GetStarted";
+import Donate from "../pages/Donate";
 import NotFound from "../pages/NotFound";
 
 function AppRoutes() {
@@ -22,6 +23,9 @@ function AppRoutes() {
       {/* Get Started Page */}
       <Route path="/getstarted" element={<GetStarted />} />
       <Route path="/get-started" element={<GetStarted />} />
+
+      {/* Donate Page */}
+      <Route path="/donate" element={<Donate />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

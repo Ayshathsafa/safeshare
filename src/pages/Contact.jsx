@@ -42,8 +42,7 @@ function Contact() {
 
                 <p>
                   Department of Computer Science Engineering
-                  <br />
-                  Your College Name
+                
                   <br />
                   Karnataka, India
                 </p>

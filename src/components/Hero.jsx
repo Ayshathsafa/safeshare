@@ -1,6 +1,7 @@
 import "./Hero.css";
 import heroImage from "../assets/hero.png";
 
+import { Link } from "react-router-dom";
 import {
   FaArrowRight,
   FaShieldAlt,
@@ -60,19 +61,14 @@ function Hero() {
 
           <div className="hero-buttons">
 
-            <button className="donate">
+            <Link to="/donate" className="donate">
+            Donate Now
+            <FaArrowRight />
+          </Link>
 
-              Donate Now
-
-              <FaArrowRight />
-
-            </button>
-
-            <button className="impact">
-
-              Explore Impact
-
-            </button>
+          <button className="impact">
+            Explore Impact
+          </button>
 
           </div>
 

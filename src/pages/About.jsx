@@ -1,153 +1,175 @@
+import { Link } from "react-router-dom";
 import "./About.css";
 import Navbar from "../components/Navbar";
 import {
+  FaArrowRight,
   FaBullseye,
   FaEye,
+  FaHandshake,
+  FaHeart,
+  FaHospital,
+  FaLeaf,
+  FaMapMarkedAlt,
+  FaPeopleArrows,
   FaRobot,
   FaShieldAlt,
-  FaUsers,
-  FaLeaf,
-  FaHandHoldingHeart,
   FaUserFriends,
-  FaHospital,
-  FaFemale,
+  FaUsers,
 } from "react-icons/fa";
 
 function About() {
+  const stats = [
+    { value: "12K+", label: "Meals redistributed" },
+    { value: "250+", label: "Verified partners" },
+    { value: "96%", label: "On-time fulfillment" },
+  ];
+
+  const pillars = [
+    {
+      icon: <FaRobot />, 
+      title: "AI-powered matching",
+      text: "Smart routing connects surplus resources with verified recipients based on urgency, location, and need.",
+    },
+    {
+      icon: <FaShieldAlt />,
+      title: "Secure & transparent",
+      text: "Every donation is validated through a trusted network of NGOs, hospitals, and community partners.",
+    },
+    {
+      icon: <FaMapMarkedAlt />,
+      title: "Localized impact",
+      text: "We match resources to nearby communities so support reaches people faster and more efficiently.",
+    },
+  ];
+
+  const beneficiaries = [
+    { icon: <FaHeart />, label: "Families" },
+    { icon: <FaHospital />, label: "Hospitals" },
+    { icon: <FaUsers />, label: "NGOs" },
+    { icon: <FaUserFriends />, label: "Communities" },
+  ];
+
   return (
     <>
       <Navbar />
 
-      {/* Hero */}
-      <section className="about-hero">
-        <div className="about-content">
-          <h1>About SafeShare</h1>
+      <main className="about-page">
+        <section className="about-hero">
+          <div className="about-hero__content">
+            <span className="about-kicker">A smarter way to give</span>
+            <h1>Transforming surplus into support.</h1>
+            <p>
+              SafeShare connects donors, hospitals, NGOs, and communities through
+              secure, real-time redistribution of food, medicine, and essential
+              resources.
+            </p>
 
-          <p>
-            SafeShare is an AI-powered Secure Food & Medicine Redistribution
-            Platform that connects donors, NGOs, hospitals and people in need
-            through intelligent resource sharing.
-          </p>
-        </div>
-      </section>
+            <div className="about-hero__actions">
+              <Link to="/contact" className="primary-btn">
+                Contact us <FaArrowRight />
+              </Link>
+            </div>
+          </div>
+        </section>
 
-      {/* Story */}
+        <section className="about-stats">
+          {stats.map((item) => (
+            <div className="stat-card" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </section>
 
-      <section className="story-section">
-
-        <div className="story-left">
-
-          <h2>Our Story</h2>
-
-          <p>
-            Every day, perfectly usable food, medicines and essential
-            resources are wasted while thousands of people struggle to access
-            basic necessities.
-          </p>
-
-          <p>
-            SafeShare bridges this gap using Artificial Intelligence,
-            location-based matching and secure verification to ensure every
-            donation reaches the right person at the right time.
-          </p>
-
-        </div>
-
-        <div className="story-right">
-
-          <img
-            src="https://undraw.co/api/illustrations/helping.svg"
-            alt="Helping Community"
-          />
-
-        </div>
-
-      </section>
-
-      {/* Mission Vision */}
-
-      <section className="mission-section">
-
-        <div className="mission-card">
-          <FaBullseye className="icon" />
-
-          <h3>Our Mission</h3>
-
-          <p>
-            Reduce waste by connecting donors with recipients using secure,
-            intelligent and transparent technology.
-          </p>
-
-        </div>
-
-        <div className="mission-card">
-          <FaEye className="icon" />
-
-          <h3>Our Vision</h3>
-
-          <p>
-            Build a future where no essential resource goes to waste and every
-            individual receives timely support.
-          </p>
-
-        </div>
-
-      </section>
-
-      {/* Features */}
-
-      <section className="about-features">
-
-        <h2>Why SafeShare?</h2>
-
-        <div className="feature-grid">
-
-          <div className="feature">
-            <FaRobot />
-            <h4>AI Matching</h4>
+        <section className="story-section">
+          <div className="story-copy">
+            <span className="section-tag">Our story</span>
+            <h2>We help prevent waste and support urgent needs.</h2>
+            <p>
+              Every day, usable food, medicines, and household essentials are
+              discarded while families and patients are still waiting for basic
+              support. SafeShare closes that gap with technology that makes giving
+              easier, faster, and more accountable.
+            </p>
+            <p>
+              By combining AI-driven matching, trusted verification, and local
+              coordination, we ensure that donations reach the people and
+              institutions that need them most.
+            </p>
           </div>
 
-          <div className="feature">
-            <FaShieldAlt />
-            <h4>Secure Platform</h4>
+          <div className="story-visual">
+            <div className="story-card story-card--primary">
+              <FaPeopleArrows />
+              <h3>People-first impact</h3>
+              <p>From meals to medicines, every contribution is matched to real need.</p>
+            </div>
+            <div className="story-card story-card--secondary">
+              <FaLeaf />
+              <h3>Purposeful sustainability</h3>
+              <p>We reduce waste while strengthening local support networks.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mission-section">
+          <div className="section-heading">
+            <span className="section-tag">Why SafeShare</span>
+            <h2>Built for impact, trust, and speed.</h2>
           </div>
 
-          <div className="feature">
-            <FaUsers />
-            <h4>Verified NGOs</h4>
+          <div className="pillar-grid">
+            {pillars.map((pillar) => (
+              <div className="pillar-card" key={pillar.title}>
+                <div className="pillar-icon">{pillar.icon}</div>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="values-section">
+          <div className="values-copy">
+            <span className="section-tag">Our mission</span>
+            <h2>Creating a more connected and compassionate system.</h2>
           </div>
 
-          <div className="feature">
-            <FaLeaf />
-            <h4>Sustainable Future</h4>
+          <div className="values-grid">
+            <div className="value-item">
+              <FaBullseye />
+              <h3>Mission</h3>
+              <p>Reduce waste and improve access to essential resources for vulnerable communities.</p>
+            </div>
+            <div className="value-item">
+              <FaEye />
+              <h3>Vision</h3>
+              <p>Build a future where donation networks are efficient, inclusive, and community-led.</p>
+            </div>
+            <div className="value-item">
+              <FaHandshake />
+              <h3>Values</h3>
+              <p>Trust, transparency, dignity, and measurable impact drive everything we do.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="beneficiaries">
+          <div className="section-heading">
+            <span className="section-tag">Who we support</span>
+            <h2>Helping the people and institutions behind every act of care.</h2>
           </div>
 
-        </div>
-
-      </section>
-
-      {/* Beneficiaries */}
-
-      <section className="beneficiaries">
-
-        <h2>Who Can Benefit?</h2>
-
-        <div className="benefit-grid">
-
-          <div><FaHandHoldingHeart /><span>Donors</span></div>
-
-          <div><FaHospital /><span>Hospitals</span></div>
-
-          <div><FaFemale /><span>Women Shelters</span></div>
-
-          <div><FaUserFriends /><span>Families</span></div>
-
-          <div><FaUsers /><span>NGOs</span></div>
-
-        </div>
-
-      </section>
-
+          <div className="benefit-grid">
+            {beneficiaries.map((beneficiary) => (
+              <div className="benefit-card" key={beneficiary.label}>
+                <div className="benefit-icon">{beneficiary.icon}</div>
+                <span>{beneficiary.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 }

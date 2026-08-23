@@ -45,36 +45,38 @@ function Features() {
   };
 
   return (
-    <section style={styles.section}>
-      <h2 style={styles.title}>Why Choose SafeShare?</h2>
+    <section className="features-section">
+      <div className="section-content">
+        <h2 className="section-title">Why Choose SafeShare?</h2>
 
-      <p style={styles.subtitle}>
-        SafeShare makes donation simple, secure, and AI-powered.
-      </p>
+        <p className="section-subtitle">
+          SafeShare makes donation simple, secure, and AI-powered.
+        </p>
 
-      <div style={styles.grid}>
-        <div style={styles.card}>
-          <div style={styles.icon}>🍱</div>
-          <h3 style={styles.heading}>Food Donation</h3>
-          <p style={styles.text}>Donate surplus food to people and NGOs safely.</p>
-        </div>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🍱</div>
+            <h3 className="feature-heading">Food Donation</h3>
+            <p className="feature-text">Donate surplus food to people and NGOs safely.</p>
+          </div>
 
-        <div style={styles.card}>
-          <div style={styles.icon}>💊</div>
-          <h3 style={styles.heading}>Medicine Sharing</h3>
-          <p style={styles.text}>Share unused medicines with verified recipients.</p>
-        </div>
+          <div className="feature-card">
+            <div className="feature-icon">💊</div>
+            <h3 className="feature-heading">Medicine Sharing</h3>
+            <p className="feature-text">Share unused medicines with verified recipients.</p>
+          </div>
 
-        <div style={styles.card}>
-          <div style={styles.icon}>🤖</div>
-          <h3 style={styles.heading}>AI Matching</h3>
-          <p style={styles.text}>AI matches donors with the right recipients.</p>
-        </div>
+          <div className="feature-card">
+            <div className="feature-icon">🤖</div>
+            <h3 className="feature-heading">AI Matching</h3>
+            <p className="feature-text">AI matches donors with the right recipients.</p>
+          </div>
 
-        <div style={styles.card}>
-          <div style={styles.icon}>🛡️</div>
-          <h3 style={styles.heading}>Secure Platform</h3>
-          <p style={styles.text}>Verified users with safe and transparent donations.</p>
+          <div className="feature-card">
+            <div className="feature-icon">🛡️</div>
+            <h3 className="feature-heading">Secure Platform</h3>
+            <p className="feature-text">Verified users with safe and transparent donations.</p>
+          </div>
         </div>
       </div>
     </section>
