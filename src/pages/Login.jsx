@@ -10,32 +10,40 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault();
+const handleLogin = async (event) => {
+  event.preventDefault();
 
-    const savedUser = JSON.parse(
-      localStorage.getItem("safeShareUser")
-    );
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-    if (!savedUser) {
-      alert("Please register first.");
-      navigate("/register");
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Login failed.");
       return;
     }
 
-    if (
-      email === savedUser.email &&
-      password === savedUser.password
-    ) {
-      localStorage.setItem("safeShareLoggedIn", "true");
+    // Save the logged-in user for the frontend session
+    localStorage.setItem("safeShareUser", JSON.stringify(data.user));
+    localStorage.setItem("safeShareLoggedIn", "true");
 
-      alert(`Welcome back, ${savedUser.name}!`);
+    alert(`Welcome back, ${data.user.name}!`);
 
-      navigate("/donate");
-    } else {
-      alert("Invalid email or password.");
-    }
-  };
+    navigate("/donor-dashboard");
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Cannot connect to SafeShare server.");
+  }
+};
 
   return (
     <>

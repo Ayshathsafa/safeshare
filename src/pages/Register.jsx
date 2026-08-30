@@ -57,7 +57,7 @@ function Register() {
     setRole(selected);
   };
 
- const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
 
   const userData = {
@@ -65,14 +65,29 @@ function Register() {
     ...formData,
   };
 
-  localStorage.setItem(
-    "safeShareUser",
-    JSON.stringify(userData)
-  );
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
-  alert("Registration successful! Please login.");
+    const data = await response.json();
 
-  window.location.href = "/login";
+    if (!response.ok) {
+      alert(data.message || "Registration failed.");
+      return;
+    }
+
+    alert("Registration successful! Please login.");
+
+    window.location.href = "/login";
+  } catch (error) {
+    console.error("Registration error:", error);
+    alert("Cannot connect to SafeShare server.");
+  }
 };
 
   return (
