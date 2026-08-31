@@ -9,6 +9,7 @@ import GetStarted from "../pages/GetStarted";
 import Donate from "../pages/Donate";
 import NotFound from "../pages/NotFound";
 import DonorDashboard from "../pages/DonorDashboard";
+import RecipientDashboard from "../pages/RecipientDashboard";
 
 function AppRoutes() {
   return (
@@ -28,6 +29,10 @@ function AppRoutes() {
       {/* Donate Page */}
       <Route path="/donate" element={<Donate />} />
       <Route path="/donor-dashboard" element={<DonorDashboard />} />
+      <Route
+  path="/recipient-dashboard"
+  element={<RecipientDashboard />}
+/>
 
       <Route path="*" element={<NotFound />} />
     </Routes>

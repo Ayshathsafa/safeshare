@@ -1,0 +1,620 @@
+/* =========================
+   RECIPIENT DASHBOARD
+========================= */
+
+.recipient-dashboard {
+  min-height: 100vh;
+  padding: 45px 8% 80px;
+  background: #f6f9f7;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.recipient-header {
+  max-width: 1250px;
+  margin: 0 auto 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.recipient-label {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  color: #159447;
+}
+
+.recipient-header h1 {
+  margin: 0 0 9px;
+
+  color: #10233f;
+
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.recipient-header p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #718096;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.recipient-header-icon {
+  width: 72px;
+  height: 72px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: #e7f7ed;
+  color: #159447;
+
+  font-size: 30px;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.recipient-summary {
+  max-width: 1250px;
+  margin: 0 auto 35px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4ebe7;
+  border-radius: 18px;
+
+  box-shadow: 0 5px 20px rgba(20, 50, 30, 0.04);
+}
+
+.summary-icon {
+  width: 55px;
+  height: 55px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #e7f7ed;
+  color: #159447;
+
+  font-size: 22px;
+}
+
+.summary-card span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+.summary-card h2 {
+  margin: 0;
+
+  color: #10233f;
+
+  font-size: 28px;
+}
+
+
+/* =========================
+   AVAILABLE SECTION
+========================= */
+
+.available-section {
+  max-width: 1250px;
+  margin: 0 auto;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4ebe7;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 30px rgba(20, 50, 30, 0.04);
+}
+
+.available-heading {
+  padding-bottom: 22px;
+
+  border-bottom: 1px solid #edf1ee;
+}
+
+.available-heading > div > span {
+  display: inline-block;
+
+  margin-bottom: 7px;
+
+  color: #159447;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.available-heading h2 {
+  margin: 0 0 6px;
+
+  color: #10233f;
+
+  font-size: 24px;
+}
+
+.available-heading p {
+  margin: 0;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   DONATION GRID
+========================= */
+
+.recipient-donation-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+
+  padding-top: 24px;
+}
+
+
+/* =========================
+   DONATION CARD
+========================= */
+
+.recipient-donation-card {
+  position: relative;
+
+  padding: 24px;
+
+  background: #fbfdfc;
+
+  border: 1px solid #e2eae5;
+  border-radius: 18px;
+
+  transition: all 0.25s ease;
+}
+
+.recipient-donation-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #b8dbc5;
+
+  box-shadow: 0 10px 30px rgba(20, 100, 50, 0.08);
+}
+
+
+/* =========================
+   CARD TOP
+========================= */
+
+.recipient-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.recipient-item-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #e7f7ed;
+  color: #159447;
+
+  font-size: 21px;
+}
+
+.available-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 12px;
+
+  border-radius: 30px;
+
+  background: #e8f7ed;
+  color: #168842;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   ITEM NAME
+========================= */
+
+.recipient-donation-card > h3 {
+  margin: 0 0 7px;
+
+  color: #10233f;
+
+  font-size: 21px;
+
+  text-transform: capitalize;
+}
+
+.donation-type {
+  display: inline-block;
+
+  padding: 5px 10px;
+
+  border-radius: 7px;
+
+  background: #eef3f0;
+  color: #526477;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================
+   DONATION DETAILS
+========================= */
+
+.recipient-details {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+
+  margin-top: 22px;
+}
+
+.recipient-details > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 12px;
+
+  background: #ffffff;
+
+  border: 1px solid #edf1ee;
+  border-radius: 10px;
+}
+
+.recipient-details strong {
+  color: #84909e;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recipient-details span {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #34465b;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recipient-details span svg {
+  color: #159447;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.recipient-description {
+  margin: 17px 0 0;
+  padding: 13px 15px;
+
+  background: #f4f8f5;
+
+  border-radius: 10px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   DONOR INFORMATION
+========================= */
+
+.donor-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 20px;
+  padding-top: 17px;
+
+  border-top: 1px solid #e7ece9;
+}
+
+.donor-info span {
+  color: #8a96a3;
+
+  font-size: 12px;
+}
+
+.donor-info strong {
+  color: #34465b;
+
+  font-size: 13px;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================
+   REQUEST BUTTON
+========================= */
+
+.request-btn {
+  width: 100%;
+
+  margin-top: 18px;
+  padding: 13px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #159447;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.request-btn:hover {
+  background: #117c3b;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.recipient-empty {
+  padding: 70px 30px;
+
+  text-align: center;
+}
+
+.recipient-empty-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #e9f8ef;
+  color: #159447;
+
+  font-size: 28px;
+}
+
+.recipient-empty h3 {
+  margin: 0 0 8px;
+
+  color: #10233f;
+
+  font-size: 20px;
+}
+
+.recipient-empty p {
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  color: #718096;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   AI INFORMATION
+========================= */
+
+.recipient-ai {
+  max-width: 1250px;
+
+  margin: 25px auto 0;
+  padding: 24px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 18px;
+
+  background: #10233f;
+
+  border-radius: 18px;
+
+  color: #ffffff;
+}
+
+.ai-symbol {
+  width: 50px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  font-size: 23px;
+}
+
+.recipient-ai h3 {
+  margin: 0 0 7px;
+
+  font-size: 17px;
+}
+
+.recipient-ai p {
+  max-width: 850px;
+
+  margin: 0;
+
+  color: #cbd5e1;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .recipient-dashboard {
+    padding: 35px 6% 70px;
+  }
+
+  .recipient-donation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipient-header {
+    align-items: flex-start;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .recipient-dashboard {
+    padding: 30px 5% 60px;
+  }
+
+  .recipient-header {
+    flex-direction: column;
+  }
+
+  .recipient-header-icon {
+    display: none;
+  }
+
+  .recipient-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .available-section {
+    padding: 20px;
+  }
+
+  .recipient-donation-grid {
+    padding-top: 20px;
+  }
+
+  .recipient-details {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .recipient-ai {
+    flex-direction: column;
+  }
+
+}

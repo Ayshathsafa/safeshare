@@ -36,9 +36,16 @@ const handleLogin = async (event) => {
     localStorage.setItem("safeShareUser", JSON.stringify(data.user));
     localStorage.setItem("safeShareLoggedIn", "true");
 
-    alert(`Welcome back, ${data.user.name}!`);
+   alert(`Welcome back, ${data.user.name}!`);
 
-    navigate("/donor-dashboard");
+if (data.user.role === "donor") {
+  navigate("/donor-dashboard");
+} else if (
+  data.user.role === "ngo" ||
+  data.user.role === "hospital"
+) {
+  navigate("/recipient-dashboard");
+}
   } catch (error) {
     console.error("Login error:", error);
     alert("Cannot connect to SafeShare server.");
