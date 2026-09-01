@@ -15,6 +15,13 @@ const donationSchema = new mongoose.Schema(
 
     type: {
       type: String,
+      enum: [
+        "food",
+        "medicine",
+        "clothes",
+        "books",
+        "essentials",
+      ],
       required: true,
     },
 
@@ -35,16 +42,41 @@ const donationSchema = new mongoose.Schema(
 
     expiryDate: {
       type: Date,
+      default: null,
     },
 
     description: {
       type: String,
+      default: "",
     },
 
+    // DONATION IMAGE
+    image: {
+      url: {
+        type: String,
+        default: "",
+      },
+
+      filename: {
+        type: String,
+        default: "",
+      },
+
+      mimetype: {
+        type: String,
+        default: "",
+      },
+    },
+
+    // Donation status
     status: {
       type: String,
-      enum: ["Pending", "Accepted", "Delivered"],
-      default: "Pending",
+      enum: [
+        "pending",
+        "matched",
+        "completed",
+      ],
+      default: "pending",
     },
   },
   {
@@ -52,6 +84,9 @@ const donationSchema = new mongoose.Schema(
   }
 );
 
-const Donation = mongoose.model("Donation", donationSchema);
+const Donation = mongoose.model(
+  "Donation",
+  donationSchema
+);
 
 export default Donation;

@@ -10,6 +10,8 @@ import {
   FaCalendarAlt,
   FaRobot,
   FaShieldAlt,
+  FaCamera,
+  FaTimes,
 } from "react-icons/fa";
 import "./Donate.css";
 
@@ -32,6 +34,9 @@ function Donate() {
     description: "",
   });
 
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -41,56 +46,98 @@ function Donate() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+  // IMAGE UPLOAD
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
 
-  const user = JSON.parse(localStorage.getItem("safeShareUser"));
+    if (!file) return;
 
-  if (!user) {
-    alert("Please login first.");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:5000/api/donations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        donor: user._id,
-        donorName: user.name,
-        type: donationType,
-        itemName: formData.itemName,
-        quantity: formData.quantity,
-        location: formData.location,
-        expiryDate: formData.expiryDate || null,
-        description: formData.description,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Donation submission failed.");
+    if (!file.type.startsWith("image/")) {
+      alert("Please select an image file.");
       return;
     }
 
-    alert("Donation submitted successfully! ✅");
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image size should be less than 5MB.");
+      return;
+    }
 
-    setFormData({
-      itemName: "",
-      quantity: "",
-      location: "",
-      expiryDate: "",
-      description: "",
-    });
+    setImage(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
 
-  } catch (error) {
-    console.error("Donation error:", error);
-    alert("Cannot connect to SafeShare server.");
-  }
-};
+  // REMOVE IMAGE
+  const removeImage = () => {
+    setImage(null);
+    setImagePreview("");
+  };
+
+  // SUBMIT DONATION
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const user = JSON.parse(
+      localStorage.getItem("safeShareUser")
+    );
+
+    if (!user) {
+      alert("Please login first.");
+      return;
+    }
+
+    try {
+      const data = new FormData();
+
+      data.append("donor", user._id);
+      data.append("donorName", user.name);
+      data.append("type", donationType);
+      data.append("itemName", formData.itemName);
+      data.append("quantity", formData.quantity);
+      data.append("location", formData.location);
+      data.append("expiryDate", formData.expiryDate || "");
+      data.append("description", formData.description);
+
+      if (image) {
+        data.append("image", image);
+      }
+
+      const response = await fetch(
+        "http://localhost:5000/api/donations",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(
+          result.message ||
+            "Donation submission failed."
+        );
+        return;
+      }
+
+      alert("Donation submitted successfully! ✅");
+
+      setFormData({
+        itemName: "",
+        quantity: "",
+        location: "",
+        expiryDate: "",
+        description: "",
+      });
+
+      setImage(null);
+      setImagePreview("");
+      setDonationType("food");
+
+    } catch (error) {
+      console.error("Donation error:", error);
+      alert("Cannot connect to SafeShare server.");
+    }
+  };
 
   return (
     <>
@@ -101,12 +148,15 @@ function Donate() {
         {/* PAGE HEADER */}
         <div className="donate-header">
           <div>
-            <span className="page-label">DONATION</span>
+            <span className="page-label">
+              DONATION
+            </span>
 
             <h1>Donate Resources</h1>
 
             <p>
-              Share useful resources with people who need them.
+              Share useful resources with people
+              who need them.
             </p>
           </div>
 
@@ -115,27 +165,29 @@ function Donate() {
           </div>
         </div>
 
-
         {/* MAIN CONTENT */}
         <div className="donate-grid">
 
-          {/* FORM CARD */}
+          {/* FORM */}
           <section className="donate-card">
 
             <div className="card-title">
               <h2>Donation Details</h2>
 
               <p>
-                Enter the details of the resource you want to donate.
+                Enter the details of the resource
+                you want to donate.
               </p>
             </div>
-
 
             <form onSubmit={handleSubmit}>
 
               {/* DONATION TYPE */}
               <div className="form-group">
-                <label>Donation Type</label>
+
+                <label>
+                  Donation Type
+                </label>
 
                 <div className="type-options">
 
@@ -144,27 +196,36 @@ function Donate() {
                       type="button"
                       key={type.id}
                       className={`type-option ${
-                        donationType === type.id ? "active" : ""
+                        donationType === type.id
+                          ? "active"
+                          : ""
                       }`}
-                      onClick={() => setDonationType(type.id)}
+                      onClick={() =>
+                        setDonationType(type.id)
+                      }
                     >
                       <span className="type-icon">
                         {type.icon}
                       </span>
 
-                      <span>{type.label}</span>
+                      <span>
+                        {type.label}
+                      </span>
                     </button>
                   ))}
 
                 </div>
-              </div>
 
+              </div>
 
               {/* ITEM + QUANTITY */}
               <div className="form-row">
 
                 <div className="form-group">
-                  <label>Item Name</label>
+
+                  <label>
+                    Item Name
+                  </label>
 
                   <input
                     type="text"
@@ -174,11 +235,14 @@ function Donate() {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
 
-
                 <div className="form-group">
-                  <label>Quantity</label>
+
+                  <label>
+                    Quantity
+                  </label>
 
                   <input
                     type="text"
@@ -188,18 +252,22 @@ function Donate() {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
 
               </div>
-
 
               {/* LOCATION + EXPIRY */}
               <div className="form-row">
 
                 <div className="form-group">
-                  <label>Location</label>
+
+                  <label>
+                    Location
+                  </label>
 
                   <div className="input-with-icon">
+
                     <FaMapMarkerAlt />
 
                     <input
@@ -210,14 +278,19 @@ function Donate() {
                       onChange={handleChange}
                       required
                     />
+
                   </div>
+
                 </div>
 
-
                 <div className="form-group">
-                  <label>Expiry Date</label>
+
+                  <label>
+                    Expiry Date
+                  </label>
 
                   <div className="input-with-icon">
+
                     <FaCalendarAlt />
 
                     <input
@@ -226,15 +299,94 @@ function Donate() {
                       value={formData.expiryDate}
                       onChange={handleChange}
                     />
+
                   </div>
+
                 </div>
 
               </div>
 
+              {/* IMAGE UPLOAD */}
+              <div className="form-group">
+
+                <label>
+                  Donation Image
+                </label>
+
+                {!imagePreview ? (
+
+                  <label
+                    htmlFor="donation-image"
+                    className="image-upload-box"
+                  >
+
+                    <FaCamera className="upload-icon" />
+
+                    <div className="upload-content">
+
+                      <strong>
+                        Upload Donation Image
+                      </strong>
+
+                      <span>
+                        JPG, PNG or WEBP · Max 5MB
+                      </span>
+
+                    </div>
+
+                    <input
+                      id="donation-image"
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      onChange={handleImageChange}
+                      hidden
+                    />
+
+                  </label>
+
+                ) : (
+
+                  <div className="image-preview-container">
+
+                    <img
+                      src={imagePreview}
+                      alt="Donation preview"
+                      className="donation-image-preview"
+                    />
+
+                    <div className="image-preview-info">
+
+                      <strong>
+                        {image?.name}
+                      </strong>
+
+                      <span>
+                        {(image?.size / 1024 / 1024).toFixed(2)} MB
+                      </span>
+
+                    </div>
+
+                    <button
+                      type="button"
+                      className="remove-image-btn"
+                      onClick={removeImage}
+                    >
+                      <FaTimes />
+                      Remove Image
+                    </button>
+
+                  </div>
+
+                )}
+
+              </div>
 
               {/* DESCRIPTION */}
               <div className="form-group">
-                <label>Description</label>
+
+                <label>
+                  Description
+                </label>
 
                 <textarea
                   name="description"
@@ -243,19 +395,22 @@ function Donate() {
                   onChange={handleChange}
                   rows="4"
                 />
+
               </div>
 
-
-              {/* BUTTON */}
-              <button type="submit" className="submit-donation">
+              {/* SUBMIT */}
+              <button
+                type="submit"
+                className="submit-donation"
+              >
                 Submit Donation
               </button>
 
             </form>
+
           </section>
 
-
-          {/* RIGHT SIDE */}
+          {/* RIGHT SIDEBAR */}
           <aside className="donate-sidebar">
 
             {/* AI CARD */}
@@ -265,24 +420,36 @@ function Donate() {
                 <FaRobot />
               </div>
 
-              <h3>AI-Powered Matching</h3>
+              <h3>
+                AI-Powered Matching
+              </h3>
 
               <p>
-                SafeShare analyzes your donation and finds suitable
-                recipients based on location, resource type, urgency
+                SafeShare analyzes your donation
+                and finds suitable recipients based
+                on location, resource type, urgency
                 and requirements.
               </p>
 
               <div className="info-list">
-                <span>✓ Location-based matching</span>
-                <span>✓ Urgency consideration</span>
-                <span>✓ Recipient requirements</span>
+
+                <span>
+                  ✓ Location-based matching
+                </span>
+
+                <span>
+                  ✓ Urgency consideration
+                </span>
+
+                <span>
+                  ✓ Recipient requirements
+                </span>
+
               </div>
 
             </div>
 
-
-            {/* SECURITY CARD */}
+            {/* SECURITY */}
             <div className="info-card security-card">
 
               <div className="info-icon">
@@ -290,49 +457,75 @@ function Donate() {
               </div>
 
               <div>
-                <h3>Safe & Verified</h3>
+
+                <h3>
+                  Safe & Verified
+                </h3>
 
                 <p>
-                  Donations are securely stored and shared
-                  with verified NGOs and hospitals.
+                  Donations are securely stored
+                  and shared with verified NGOs
+                  and hospitals.
                 </p>
+
               </div>
 
             </div>
 
-
             {/* PROCESS */}
             <div className="process-card">
 
-              <h3>How it works</h3>
+              <h3>
+                How it works
+              </h3>
 
               <div className="process-item">
+
                 <span>1</span>
 
                 <div>
-                  <strong>Submit donation</strong>
-                  <p>Provide your resource details.</p>
+                  <strong>
+                    Submit donation
+                  </strong>
+
+                  <p>
+                    Provide your resource details.
+                  </p>
                 </div>
+
               </div>
 
-
               <div className="process-item">
+
                 <span>2</span>
 
                 <div>
-                  <strong>AI finds a match</strong>
-                  <p>Suitable recipients are identified.</p>
+                  <strong>
+                    AI finds a match
+                  </strong>
+
+                  <p>
+                    Suitable recipients are identified.
+                  </p>
                 </div>
+
               </div>
 
-
               <div className="process-item">
+
                 <span>3</span>
 
                 <div>
-                  <strong>Donation is received</strong>
-                  <p>Your resource reaches someone in need.</p>
+                  <strong>
+                    Donation is received
+                  </strong>
+
+                  <p>
+                    Your resource reaches someone
+                    in need.
+                  </p>
                 </div>
+
               </div>
 
             </div>

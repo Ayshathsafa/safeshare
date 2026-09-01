@@ -1,245 +1,255 @@
-/* =========================
+/* =========================================================
    DONATE DASHBOARD
-========================= */
+========================================================= */
 
 .donate-dashboard {
-  min-height: calc(100vh - 70px);
-  background: #f7f9fc;
-  padding: 45px 7% 80px;
-  color: #172b4d;
+  width: 100%;
+  min-height: 100vh;
+  background: #f6f9f8;
+  padding: 125px 6% 70px;
+  box-sizing: border-box;
 }
 
-
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .donate-header {
-  max-width: 1200px;
-  margin: 0 auto 30px;
+  max-width: 1400px;
+  margin: 0 auto 35px;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .page-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #168a4b;
+  display: block;
+  margin-bottom: 10px;
+
+  color: #119957;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
 .donate-header h1 {
-  margin: 7px 0 6px;
-  font-size: 32px;
-  font-weight: 750;
-  color: #172b4d;
+  margin: 0 0 10px;
+
+  color: #0f2d4f;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 .donate-header p {
   margin: 0;
-  color: #718096;
-  font-size: 15px;
+
+  color: #6b819c;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 .header-icon {
-  width: 55px;
-  height: 55px;
+  width: 78px;
+  height: 78px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 15px;
+  background: #e8f7ef;
+  border-radius: 22px;
 
-  background: #e7f7ed;
-  color: #168a4b;
-
-  font-size: 23px;
+  color: #119957;
+  font-size: 32px;
 }
 
-
-/* =========================
-   GRID
-========================= */
+/* =========================================================
+   MAIN GRID
+========================================================= */
 
 .donate-grid {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
-  gap: 25px;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 0.9fr);
+  gap: 28px;
 
   align-items: start;
 }
 
-
-/* =========================
-   MAIN CARD
-========================= */
+/* =========================================================
+   DONATION FORM CARD
+========================================================= */
 
 .donate-card {
   background: #ffffff;
 
-  border: 1px solid #e5eaf0;
-  border-radius: 18px;
+  border: 1px solid #dfe8e4;
+  border-radius: 26px;
 
-  padding: 32px;
+  padding: 38px;
 
-  box-shadow: 0 8px 30px rgba(20, 40, 70, 0.05);
+  box-shadow: 0 12px 35px rgba(15, 45, 79, 0.06);
+
+  box-sizing: border-box;
 }
 
 .card-title {
-  padding-bottom: 22px;
-  margin-bottom: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
 
-  border-bottom: 1px solid #edf0f3;
+  border-bottom: 1px solid #e5ece9;
 }
 
 .card-title h2 {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 
-  font-size: 20px;
-  color: #172b4d;
+  color: #0f2d4f;
+  font-size: 27px;
+  font-weight: 800;
 }
 
 .card-title p {
   margin: 0;
 
-  font-size: 14px;
-  color: #7b8798;
+  color: #71859d;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-
-/* =========================
+/* =========================================================
    FORM
-========================= */
+========================================================= */
 
 .form-group {
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .form-group label {
   display: block;
+  margin-bottom: 10px;
 
-  margin-bottom: 8px;
-
-  font-size: 13px;
+  color: #173b60;
+  font-size: 16px;
   font-weight: 700;
-
-  color: #334e68;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  gap: 18px;
+  gap: 22px;
 }
+
+/* =========================================================
+   INPUTS
+========================================================= */
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   box-sizing: border-box;
 
-  border: 1px solid #dce3ea;
-  border-radius: 10px;
+  border: 1px solid #d5e1e8;
+  border-radius: 13px;
 
   background: #ffffff;
 
-  padding: 13px 14px;
+  color: #173b60;
+  font-family: inherit;
+  font-size: 16px;
 
   outline: none;
 
-  font-family: inherit;
-  font-size: 14px;
-
-  color: #243b53;
-
-  transition: 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .form-group input {
-  height: 48px;
+  height: 58px;
+  padding: 0 17px;
 }
 
 .form-group textarea {
+  min-height: 150px;
+  padding: 16px 17px;
+
   resize: vertical;
-  min-height: 110px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #36a866;
-
-  box-shadow: 0 0 0 3px rgba(54, 168, 102, 0.08);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #a0aab5;
+  color: #9aacc0;
 }
 
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #119957;
 
-/* =========================
-   TYPE OPTIONS
-========================= */
+  box-shadow: 0 0 0 4px rgba(17, 153, 87, 0.09);
+}
+
+/* =========================================================
+   DONATION TYPES
+========================================================= */
 
 .type-options {
   display: grid;
-
   grid-template-columns: repeat(5, 1fr);
-
-  gap: 10px;
+  gap: 12px;
 }
 
 .type-option {
-  min-height: 85px;
+  min-height: 105px;
 
-  border: 1px solid #dfe6ed;
-  border-radius: 12px;
+  border: 1px solid #d7e2e9;
+  border-radius: 15px;
 
   background: #ffffff;
 
+  color: #536b83;
+
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
-  gap: 7px;
+  gap: 9px;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
 
   cursor: pointer;
 
-  color: #52667a;
-
-  font-size: 12px;
-  font-weight: 600;
-
-  transition: 0.2s ease;
+  transition:
+    all 0.2s ease;
 }
 
 .type-option:hover {
-  border-color: #86cba1;
-  background: #f7fcf9;
+  border-color: #42b978;
+  background: #f3fbf7;
+  transform: translateY(-2px);
 }
 
 .type-option.active {
-  border-color: #2fa463;
-  background: #effaf3;
-  color: #168a4b;
+  border-color: #119957;
+  background: #eefaf3;
+  color: #119957;
+
+  box-shadow: 0 5px 15px rgba(17, 153, 87, 0.08);
 }
 
 .type-icon {
-  font-size: 19px;
+  font-size: 23px;
 }
 
-
-/* =========================
-   INPUT ICON
-========================= */
+/* =========================================================
+   INPUT WITH ICON
+========================================================= */
 
 .input-with-icon {
   position: relative;
@@ -248,184 +258,326 @@
 .input-with-icon svg {
   position: absolute;
 
-  left: 14px;
+  left: 17px;
   top: 50%;
 
   transform: translateY(-50%);
 
-  color: #36a866;
+  color: #36ad70;
+  font-size: 17px;
 
-  font-size: 14px;
+  pointer-events: none;
 }
 
 .input-with-icon input {
-  padding-left: 38px;
+  padding-left: 47px;
 }
 
+/* =========================================================
+   DONATION IMAGE UPLOAD
+========================================================= */
 
-/* =========================
-   SUBMIT
-========================= */
-
-.submit-donation {
+.image-upload-box {
   width: 100%;
-  height: 50px;
+  box-sizing: border-box;
 
-  border: none;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 
-  background: #168a4b;
-  color: #ffffff;
+  min-height: 170px;
+  padding: 26px 22px;
 
-  font-size: 14px;
-  font-weight: 700;
+  border: 2px dashed #bfe6ce;
+  border-radius: 20px;
 
+  background: linear-gradient(180deg, #f6fcf8 0%, #eefaf3 100%);
+
+  text-align: left;
   cursor: pointer;
 
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.submit-donation:hover {
-  background: #11733e;
+.image-upload-box:hover {
+  border-color: #4fc184;
+  background: #edf9f1;
   transform: translateY(-1px);
 }
 
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.donate-sidebar {
-  display: flex;
-  flex-direction: column;
-
-  gap: 18px;
-}
-
-
-/* =========================
-   INFO CARDS
-========================= */
-
-.info-card,
-.process-card {
-  background: #ffffff;
-
-  border: 1px solid #e5eaf0;
-  border-radius: 17px;
-
-  padding: 24px;
-
-  box-shadow: 0 7px 25px rgba(20, 40, 70, 0.04);
-}
-
-.info-icon {
-  width: 43px;
-  height: 43px;
+.upload-icon {
+  width: 58px;
+  height: 58px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 12px;
+  background: #dff4e8;
+  border-radius: 18px;
 
-  background: #e9f7ef;
-  color: #168a4b;
+  color: #119957;
+  font-size: 24px;
+  flex-shrink: 0;
+}
 
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.upload-content strong {
+  color: #0f2d4f;
   font-size: 18px;
+  font-weight: 800;
+}
 
-  margin-bottom: 17px;
+.upload-content span {
+  color: #6f8399;
+  font-size: 14px;
+}
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 14px;
+  border: 1px solid #dfe9e3;
+  border-radius: 18px;
+  background: #f9fbfa;
+}
+
+.donation-image-preview {
+  display: block;
+  width: 100%;
+  height: 260px;
+
+  border-radius: 16px;
+  border: 1px solid #dfe7e2;
+  background: #ebf0ee;
+
+  object-fit: cover;
+}
+
+.image-preview-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  color: #35516d;
+}
+
+.image-preview-info strong {
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.image-preview-info span {
+  color: #71859d;
+  font-size: 13px;
+}
+
+.remove-image-btn {
+  align-self: flex-start;
+
+  border: 1px solid #dfe7e2;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #173b60;
+
+  padding: 9px 14px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-image-btn:hover {
+  background: #f4f6f7;
+  border-color: #c8d8d2;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-donation {
+  width: 100%;
+  height: 58px;
+
+  margin-top: 5px;
+
+  border: none;
+  border-radius: 13px;
+
+  background: #119957;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submit-donation:hover {
+  background: #0c8248;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(17, 153, 87, 0.22);
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.donate-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.info-card,
+.process-card {
+  background: #ffffff;
+
+  border: 1px solid #dfe8e4;
+  border-radius: 22px;
+
+  padding: 30px;
+
+  box-shadow: 0 10px 30px rgba(15, 45, 79, 0.05);
+
+  box-sizing: border-box;
+}
+
+.ai-card {
+  background: #effaf4;
+  border-color: #d4eddf;
+}
+
+.info-icon {
+  width: 55px;
+  height: 55px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e2f5ea;
+  border-radius: 15px;
+
+  color: #119957;
+  font-size: 23px;
 }
 
 .info-card h3,
 .process-card h3 {
-  margin: 0 0 9px;
+  margin: 0 0 10px;
 
-  font-size: 17px;
-
-  color: #203a59;
+  color: #12365a;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .info-card p {
   margin: 0;
 
-  font-size: 13px;
-  line-height: 1.7;
-
-  color: #718096;
-}
-
-
-/* =========================
-   AI CARD
-========================= */
-
-.ai-card {
-  background: #f1faf5;
-  border-color: #d8eee0;
+  color: #71859d;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .info-list {
-  margin-top: 18px;
+  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
+  gap: 10px;
 
-  gap: 9px;
+  color: #52715f;
+  font-size: 15px;
 }
 
-.info-list span {
-  font-size: 12px;
-  color: #47705a;
-}
-
-
-/* =========================
-   SECURITY
-========================= */
+/* =========================================================
+   SECURITY CARD
+========================================================= */
 
 .security-card {
   display: flex;
-  gap: 14px;
+  gap: 18px;
+  align-items: flex-start;
 }
 
 .security-card .info-icon {
   flex-shrink: 0;
-  margin: 0;
+  margin-bottom: 0;
 }
 
 .security-card h3 {
   margin-top: 2px;
 }
 
-
-/* =========================
-   PROCESS
-========================= */
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
 
 .process-card h3 {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .process-item {
   display: flex;
-  gap: 12px;
+  gap: 15px;
 
-  padding-bottom: 16px;
-  margin-bottom: 16px;
+  padding: 18px 0;
 
-  border-bottom: 1px solid #edf0f3;
+  border-bottom: 1px solid #e6ece9;
+}
+
+.process-item:first-of-type {
+  padding-top: 0;
 }
 
 .process-item:last-child {
-  padding-bottom: 0;
-  margin-bottom: 0;
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .process-item > span {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
 
   flex-shrink: 0;
 
@@ -433,12 +585,12 @@
   align-items: center;
   justify-content: center;
 
-  border-radius: 8px;
+  border-radius: 11px;
 
-  background: #e9f7ef;
-  color: #168a4b;
+  background: #e8f7ef;
+  color: #119957;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -447,26 +599,23 @@
 
   margin-bottom: 4px;
 
-  font-size: 13px;
-  color: #29435f;
+  color: #173b60;
+  font-size: 15px;
 }
 
 .process-item p {
   margin: 0;
 
-  font-size: 12px;
+  color: #8193a7;
+  font-size: 14px;
   line-height: 1.5;
-
-  color: #8491a0;
 }
 
-
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media (max-width: 950px) {
-
+@media (max-width: 1100px) {
   .donate-grid {
     grid-template-columns: 1fr;
   }
@@ -477,28 +626,27 @@
   }
 
   .process-card {
-    grid-column: span 2;
+    grid-column: 1 / -1;
   }
-
 }
 
-
-@media (max-width: 700px) {
-
+@media (max-width: 800px) {
   .donate-dashboard {
-    padding: 30px 5% 60px;
+    padding: 110px 20px 50px;
   }
 
-  .donate-header h1 {
-    font-size: 27px;
+  .donate-header {
+    align-items: flex-start;
+  }
+
+  .header-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
   }
 
   .donate-card {
-    padding: 22px;
-  }
-
-  .type-options {
-    grid-template-columns: repeat(2, 1fr);
+    padding: 25px;
   }
 
   .form-row {
@@ -506,30 +654,51 @@
     gap: 0;
   }
 
+  .type-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .donate-sidebar {
-    display: flex;
+    grid-template-columns: 1fr;
   }
 
   .process-card {
     grid-column: auto;
   }
-
 }
 
+@media (max-width: 550px) {
+  .donate-dashboard {
+    padding: 100px 14px 40px;
+  }
 
-@media (max-width: 430px) {
+  .donate-header h1 {
+    font-size: 2rem;
+  }
 
-  .donate-header {
-    align-items: flex-start;
+  .donate-header p {
+    font-size: 15px;
   }
 
   .header-icon {
-    width: 45px;
-    height: 45px;
+    display: none;
+  }
+
+  .donate-card {
+    padding: 20px;
+    border-radius: 20px;
   }
 
   .type-options {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  .type-option {
+    min-height: 90px;
+  }
+
+  .info-card,
+  .process-card {
+    padding: 23px;
+  }
 }

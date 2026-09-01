@@ -1,16 +1,115 @@
 import express from "express";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
 import {
   createDonation,
   getDonations,
+  getDonationsByDonor,
 } from "../controllers/donationController.js";
 
 const router = express.Router();
 
-// Submit a donation
-router.post("/", createDonation);
+
+// ==========================================
+// CREATE UPLOAD FOLDER
+// ==========================================
+
+const uploadDirectory =
+  "uploads/donations";
+
+if (!fs.existsSync(uploadDirectory)) {
+  fs.mkdirSync(uploadDirectory, {
+    recursive: true,
+  });
+}
+
+
+// ==========================================
+// MULTER STORAGE
+// ==========================================
+
+const storage = multer.diskStorage({
+
+  destination: (req, file, cb) => {
+    cb(null, uploadDirectory);
+  },
+
+  filename: (req, file, cb) => {
+
+    const uniqueName =
+      `${Date.now()}-${Math.round(
+        Math.random() * 1e9
+      )}${path.extname(file.originalname)}`;
+
+    cb(null, uniqueName);
+  },
+
+});
+
+
+// ==========================================
+// FILE FILTER
+// ==========================================
+
+const fileFilter = (req, file, cb) => {
+
+  if (file.mimetype.startsWith("image/")) {
+    cb(null, true);
+  } else {
+    cb(
+      new Error(
+        "Only image files are allowed."
+      ),
+      false
+    );
+  }
+
+};
+
+
+// ==========================================
+// MULTER CONFIGURATION
+// ==========================================
+
+const upload = multer({
+
+  storage,
+
+  fileFilter,
+
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+
+});
+
+
+// ==========================================
+// ROUTES
+// ==========================================
+
+// Submit donation + image
+router.post(
+  "/",
+  upload.single("image"),
+  createDonation
+);
+
 
 // Get all donations
-router.get("/", getDonations);
+router.get(
+  "/",
+  getDonations
+);
+
+
+// Get donations belonging to one donor
+router.get(
+  "/donor/:donorId",
+  getDonationsByDonor
+);
+
 
 export default router;
