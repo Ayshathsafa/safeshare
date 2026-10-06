@@ -7,6 +7,10 @@ import {
   createDonation,
   getDonations,
   getDonationsByDonor,
+  requestDonation,
+  getRequestsByRecipient,
+  getRequestsByDonor,
+  updateDonationRequest,
 } from "../controllers/donationController.js";
 
 const router = express.Router();
@@ -103,6 +107,12 @@ router.get(
   "/",
   getDonations
 );
+
+// Recipient donation requests
+router.get("/requests/recipient/:recipientId", getRequestsByRecipient);
+router.get("/requests/donor/:donorId", getRequestsByDonor);
+router.patch("/requests/:requestId/status", updateDonationRequest);
+router.post("/:donationId/request", requestDonation);
 
 
 // Get donations belonging to one donor

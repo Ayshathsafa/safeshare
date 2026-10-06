@@ -47,6 +47,27 @@ const userSchema = new mongoose.Schema(
     notes: {
       type: String,
     },
+
+    recipientRequirements: {
+      type: [String],
+      default: [],
+    },
+
+    resourceNeeds: {
+      type: [
+        {
+          category: {
+            type: String,
+            enum: ["food", "medicine", "clothes", "books", "essentials"],
+            required: true,
+          },
+          item: { type: String, trim: true, maxlength: 100 },
+          maxQuantity: { type: Number, min: 0, default: null },
+          unit: { type: String, trim: true, maxlength: 30, default: "" },
+        },
+      ],
+      default: [],
+    },
   },
   {
     timestamps: true,

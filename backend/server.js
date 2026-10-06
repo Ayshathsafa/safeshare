@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import donationRoutes from "./routes/donationRoutes.js";
 import path from "path";
+import aiRoutes from "./routes/aiRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(
 );
 app.use("/api/auth", authRoutes);
 app.use("/api/donations", donationRoutes);
+app.use("/api/ai", aiRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.json({
